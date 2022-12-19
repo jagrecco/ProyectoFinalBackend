@@ -1,0 +1,7 @@
+
+{ "from": "Servidor Tienda",
+  "to": "litzy.robel@ethereal.email",
+  "subject": "nuevo registro",
+  "text": "nuevo registro al sistema",
+  "html": "<h1 style='color: blue'>nuevo registro al sistema</h1>"
+}

@@ -1,0 +1,43 @@
+[2022-11-06T19:17:13.699Z  Level: [31merror[39m  Intengo de registrar usuario existente: {
+  _id: new ObjectId("6367144c26a88a5c4a4ae039"),
+  email: 'tutu@coder.com',
+  password: '$2b$10$cLPYjwxI/Ille83cLnjNcO4.DPDNuu17w/DOGXDY5fUK4FDQeF1L.',
+  nombre: 'Tutu',
+  direccion: 'Evergreen Terrace 742',
+  edad: 54,
+  telefono: '+5491163279632',
+  foto: 'https://randomuser.me/api/portraits/med/men/91.jpg',
+  createdAt: 2022-11-06T01:56:28.563Z,
+  updatedAt: 2022-11-06T01:56:28.563Z
+}]
+[2022-11-06T19:19:40.655Z  Level: [31merror[39m  Intengo de registrar usuario existente: {
+  _id: new ObjectId("6367144c26a88a5c4a4ae039"),
+  email: 'tutu@coder.com',
+  password: '$2b$10$cLPYjwxI/Ille83cLnjNcO4.DPDNuu17w/DOGXDY5fUK4FDQeF1L.',
+  nombre: 'Tutu',
+  direccion: 'Evergreen Terrace 742',
+  edad: 54,
+  telefono: '+5491163279632',
+  foto: 'https://randomuser.me/api/portraits/med/men/91.jpg',
+  createdAt: 2022-11-06T01:56:28.563Z,
+  updatedAt: 2022-11-06T01:56:28.563Z
+}]
+[2022-11-06T19:20:33.473Z  Level: [31merror[39m  Intengo de registrar usuario existente: {
+  _id: new ObjectId("6367144c26a88a5c4a4ae039"),
+  email: 'tutu@coder.com',
+  password: '$2b$10$cLPYjwxI/Ille83cLnjNcO4.DPDNuu17w/DOGXDY5fUK4FDQeF1L.',
+  nombre: 'Tutu',
+  direccion: 'Evergreen Terrace 742',
+  edad: 54,
+  telefono: '+5491163279632',
+  foto: 'https://randomuser.me/api/portraits/med/men/91.jpg',
+  createdAt: 2022-11-06T01:56:28.563Z,
+  updatedAt: 2022-11-06T01:56:28.563Z
+}]
+[2022-11-09T21:59:35.052Z  Level: [31merror[39m  Error modificando usuario: ReferenceError: foto is not defined]
+[2022-11-13T18:27:09.692Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "Todos" (type string) at path "_id" for model "productos"]
+[2022-11-13T18:27:35.323Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "Todos" (type string) at path "_id" for model "productos"]
+[2022-11-13T18:27:38.439Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "Todos" (type string) at path "_id" for model "productos"]
+[2022-11-13T18:27:48.027Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "Todos" (type string) at path "_id" for model "productos"]
+[2022-12-09T01:19:24.822Z  Level: [31merror[39m  Error de envío de mail: Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials c19-20020a056870479300b00130d060ce80sm173986oaq.31 - gsmtp]

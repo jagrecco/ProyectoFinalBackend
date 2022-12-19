@@ -1,0 +1,22 @@
+[
+    {
+      "nombre": "Calculadora",
+      "precio": 100,
+      "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png"
+    },
+    {
+      "nombre": "Clock",
+      "precio": 214,
+      "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-256.png"
+    },
+    {
+      "nombre": "Manzana",
+      "precio": 501,
+      "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/apple-fruit-science-school-512.png"
+    },
+    {
+      "nombre": "BackPack",
+      "precio": 1010,
+      "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-512.png"
+    }
+  ]

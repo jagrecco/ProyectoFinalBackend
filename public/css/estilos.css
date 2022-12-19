@@ -1,0 +1,111 @@
+.body{
+    background-color: aquamarine;
+}
+.loginContainer{
+    /* box-shadow:
+        2.5px 2.8px 2.2px rgba(0, 0, 0, 0.045),
+        6.1px 6.7px 5.3px rgba(0, 0, 0, 0.069),
+        11.5px 12.5px 10px rgba(0, 0, 0, 0.088),
+        20.5px 22.3px 17.9px rgba(0, 0, 0, 0.103),
+        38.4px 41.8px 33.4px rgba(0, 0, 0, 0.114),
+        92px 100px 80px rgba(0, 0, 0, 0.12); */
+
+
+    margin:80px;
+}
+
+.titulo{
+    text-align: center;
+    color: blue;
+}
+
+.titulo_carga{
+    padding: 5px 2px;
+}
+
+.loginContainer{
+    
+    max-width: 50%;
+}
+.tarjetaSigin{
+    max-width: 450px;
+}
+.imagen{
+    width: 120px;
+    height: 90px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-prods{
+    margin: 3px 3px;
+}
+
+.blockquote-footer{
+    font-size: .675em;
+}
+
+.filtroProductos{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.iti{
+    width: 100%;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+
+.imagenPerfil{
+    margin:auto;
+    margin-bottom: 15px;
+    max-width: 200px;
+    height: auto;
+}
+
+.imgNav{
+    width: 60px;
+    height: auto;
+    /* box-shadow: 7px 10px 5px 0px rgba(247,243,243,0.75); */
+    /* filter: drop-shadow(0 0 0.75rem white); */
+    filter: drop-shadow(2px 2px 2px white);
+}
+
+.txtTienda{
+    display: inline-block;
+}
+
+.btnCarro{
+    border: 2px solid white;
+}
+
+.btnCarro:hover{
+    background-color: white;
+    color: black;
+}
+
+.separaNavbar{
+    height: 100px;
+    width: 100%;
+}
+
+.encabezadoCarro{
+    color: #fff;
+    background-color: #fa3f07;
+    border-color: #454d55;
+}
+
+.dropdown-menu{
+    z-index: 1000;
+}
+.btn-prods-del{
+    background-color: #fa3f07;
+}
+.btn-prods-del:hover{
+    border: 1px solid #454d55;
+}

@@ -1,0 +1,55 @@
+<%- layout('layouts/main')%>
+
+<div class="container tarjetaSigin mt-4">
+
+  <div class="row">
+    <div class="col-md4 offset-1 col-10">
+      <div class="card mt-4 text-center">
+        
+        <div class="card-body">
+
+          <div class="imageProfile">
+            <div class="imagenPerfil card-img-top">
+              <img src="profile_img.png" class="img-thumbnail" id="imgProfile">
+            </div>
+            
+          </div>
+
+          <form action="/register" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <input type="file" name="foto" onchange="cambio()" accept="image/*" id="imgRuta" style="display:none">
+              <a href="javascript:doClick()" class="btn btn-dark btn-block mt-4">Seleccione su imágen de perfil</a>
+            </div>
+
+            <div class="form-group">
+              <input type="texto" name="nombre" placeholder="Nombre" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="texto" name="direccion" placeholder="Dirección" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="texto" name="edad" placeholder="Edad" class="form-control">
+            </div>
+            <div id="login" onsubmit="process(event)" class="form-group">
+              <input id="phone" type="texto" name="telefono" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-dark btn-block mt-4">
+              Registrar
+            </button>
+          </form>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,65 @@
+[
+  {
+    "productos": [
+      {
+        "id": 10,
+        "nombre": "Producto 3021",
+        "descripcion": "el nuevo producto",
+        "codigo": "AA00AA",
+        "foto": "www.foto.com",
+        "precio": 300,
+        "stock": 100,
+        "timestamp": 1663286544789
+      }
+    ],
+    "id": 1,
+    "timestamp": 1663471566338
+  },
+  {
+    "productos": [
+      {
+        "id": 201,
+        "nombre": "Producto 3021",
+        "descripcion": "el nuevo producto",
+        "codigo": "AA00AA",
+        "foto": "www.foto.com",
+        "precio": 300,
+        "stock": 100,
+        "timestamp": 1663286544789
+      }
+    ],
+    "id": 2,
+    "timestamp": 1663471574248
+  },
+  {
+    "productos": [
+      {
+        "id": 301,
+        "nombre": "Producto 3021",
+        "descripcion": "el nuevo producto",
+        "codigo": "AA00AA",
+        "foto": "www.foto.com",
+        "precio": 300,
+        "stock": 100,
+        "timestamp": 1663286544789
+      },
+      {
+        "id": 2,
+        "nombre": "Producto 3021",
+        "descripcion": "el nuevo producto",
+        "codigo": "AA00AA",
+        "foto": "www.foto.com",
+        "precio": 300,
+        "stock": 100,
+        "timestamp": 1663286544789
+      }
+    ],
+    "id": 9,
+    "timestamp": 1663471597818
+  },
+  {
+    "productos": [],
+    "id": 10,
+    "timestamp": 1663471958355
+  }
+]
