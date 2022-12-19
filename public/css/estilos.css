@@ -109,3 +109,6 @@ img{
 .btn-prods-del:hover{
     border: 1px solid #454d55;
 }
+.chat{
+    padding-top: 100px;
+}

@@ -1,4 +1,3 @@
-
 import { productosDao } from "../daos/index.js"
 
 export async function productosGet (req, res) {
