@@ -24,8 +24,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rutaIMG=path.join(__dirname, '/public','profile-img')
  */
+import MongoSingleton from "./db/conexionSingleton.js";
 
-import "./db/conectMongo.js"
+MongoSingleton.getInstance();
+/* import "./db/conectMongo.js" */
 import router from "./routes/index.js";
 import './middleware/passport.js'
 
