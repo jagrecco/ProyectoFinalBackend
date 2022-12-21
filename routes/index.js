@@ -22,7 +22,7 @@ router.use("/", raiz);
 router.use("/login", login);
 router.use("/register", register)
 router.use("/errorlogin", errorlogin);
-
+/* router.use("/api/productos", products); */ //PARA PRUEBAS, ELIMINAR
 
 //verifico si está autenticado
 router.use("*", autenticado)

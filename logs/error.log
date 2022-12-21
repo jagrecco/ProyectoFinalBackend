@@ -41,3 +41,10 @@
 [2022-11-13T18:27:48.027Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "Todos" (type string) at path "_id" for model "productos"]
 [2022-12-09T01:19:24.822Z  Level: [31merror[39m  Error de envío de mail: Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials c19-20020a056870479300b00130d060ce80sm173986oaq.31 - gsmtp]
+[2022-12-20T20:07:32.482Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "6365d8f4afcc7d0b59d47de88" (type string) at path "_id" for model "productos"]
+[2022-12-20T20:07:53.061Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "6365d8f4afcc7d0b59d47de888" (type string) at path "_id" for model "productos"]
+[2022-12-20T20:32:05.736Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value "dfg" (type string) at path "_id" for model "productos"]
+[2022-12-20T20:49:29.228Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value " " (type string) at path "_id" for model "productos"]
+[2022-12-20T20:50:20.330Z  Level: [31merror[39m  Error al conectar a la fuente de datos: CastError: Cast to ObjectId failed for value " " (type string) at path "_id" for model "productos"]
+[2022-12-20T22:16:13.440Z  Level: [31merror[39m  Error al conectar a la fuente de datos: ValidationError: id: Path `id` is required.]
+[2022-12-20T22:17:30.130Z  Level: [31merror[39m  Error al conectar a la fuente de datos: ValidationError: id: Path `id` is required.]
