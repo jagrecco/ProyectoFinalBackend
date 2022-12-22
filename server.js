@@ -57,7 +57,7 @@ app.use(
     secret: "miPropiaSession",
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 600000 },
+    cookie: { maxAge: parseInt(process.env.EXPIRATIONTIME) },
   })
 );
 

@@ -16,7 +16,6 @@ const pSchema = new mongoose.Schema({
     thumbnail:{ type: String, max: 150, default: url },
     images: { type: Array },
 
-
     });
 
 const ProdModel = mongoose.model("productos", pSchema);

@@ -1,4 +1,5 @@
-import { productosDao } from "../daos/index.js"
+import { productosDao } from "../daos/index.js";
+import { dtoProducts } from "../dto/productsDto.js";
 
 
 export async function productosGet (req, res) {
@@ -17,11 +18,14 @@ export async function productosGet (req, res) {
       elementoAnterior=element.category
     });
     
-    const productos = await productosDao.listarTodos(cat);
+    const prods = await productosDao.listarTodos(cat);
     const usuario=req.session.user
     
     const usrID=process.env.USERID
     
+    /* console.log(dtoProducts(productos)); */
+    const productos=dtoProducts(prods);
+
     res.status(200).render('productos', {productos, categorias, usuario, usrID, cat});
   
 };

@@ -12,18 +12,15 @@ passport.use(new LocalStrategy(
   async (email, password, done) => {
     
     const user = await Usuario.findOne({ email: email });
-    process.env.USERID=user._id /* console.log(`User ID = ${user._id}`); */
+    process.env.USERID=user._id
 
     if (!user) {
       return done(null, false);
     }
 
     const isMatch = await user.matchPassword(password);
-      if (!isMatch)
-        return done(null, false);
+      if (!isMatch) return done(null, false);
 
-      /* process.env.ADM=user.adm
-      console.log("ADM = " + process.env.ADM) */
       return done(null, user);
 
   })

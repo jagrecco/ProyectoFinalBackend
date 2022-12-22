@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import logger from "../loggers/logger.js";
-import ProdModel from "../models/productoSchema.js"
-import conexion from "../config/config.js"
+/* import ProdModel from "../models/productoSchema.js"
+import conexion from "../config/config.js" */
 
 class ContenedorMongo{
     constructor(col, esquema){
