@@ -2,8 +2,7 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 
 import Usuario from "../models/user.js";
-import bcrypt from "bcrypt";
-
+/* import bcrypt from "bcrypt"; */
 
 passport.use(new LocalStrategy(
   {
@@ -12,16 +11,18 @@ passport.use(new LocalStrategy(
   async (email, password, done) => {
     
     const user = await Usuario.findOne({ email: email });
-    process.env.USERID=user._id
-
+    
     if (!user) {
       return done(null, false);
     }
 
-    const isMatch = await user.matchPassword(password);
-      if (!isMatch) return done(null, false);
+    process.env.USERID=user._id
 
-      return done(null, user);
+    const isMatch = await user.matchPassword(password);
+
+    if (!isMatch) return done(null, false);
+
+    return done(null, user);
 
   })
 );
@@ -35,5 +36,3 @@ passport.deserializeUser((id, done) => {
     done(err, user);
   });
 });
-
-/* export default passport; */

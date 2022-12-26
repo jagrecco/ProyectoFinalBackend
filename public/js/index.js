@@ -1,3 +1,69 @@
+const socket = io();
+
+const inputChat = document.getElementById("inputChat");
+
+inputChat.addEventListener("keypress", function(event) {
+  
+  if (event.key === "Enter") {
+  
+    event.preventDefault();
+  
+    document.getElementById("enviarChat").click();
+  }
+}); 
+
+document.getElementById("enviarChat").addEventListener("click", () => {
+
+  if (document.getElementById('inputMail').value!==""){
+    
+    const date = new Date();
+    const output = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear() + " " +date.toLocaleTimeString("es-ES");
+    
+    const mensaje = {
+      usrMail: document.getElementById('inputMail').value,
+      usrMsg: document.getElementById('inputChat').value,
+      date: output
+    }
+    
+    socket.emit("mensaje", mensaje)
+    
+    limpiaChat()
+
+  }
+
+});
+
+socket.on("mensajes", (mensajes) => {
+
+  const mensajesInput = mensajes
+    .map(
+      (mensaje) =>
+      `<p class="mailMensaje boxMensajes">${mensaje.usrMail}</p> <p class="fechaMensaje boxMensajes">[${mensaje.date}]</p> <p class="txtMensaje boxMensajes"> ${mensaje.usrMsg}</p>`
+    
+    )
+    .join("<br>");
+  document.getElementById("msg").innerHTML = mensajesInput;
+});
+
+function limpiaChat() {  
+  document.getElementById("inputChat").value="";
+}
+
+
+const inputPw = document.getElementById("password");
+const inputPwVer = document.getElementById("passwordVerificar");
+const btnRegister = document.getElementById("btnRegister");
+
+btnRegister.addEventListener("click", function(event) {
+  event.preventDefault();
+  if (inputPw.value === inputPwVer.value && inputPw.value.length >= 5) {
+    document.getElementById("formRegister").submit();
+  } else {
+    alert("Las contraseñas no coinciden o no cumplen con los requisitos");
+  }
+})
+
+
 async function abrirModal(idProd){
 
   const prod={}

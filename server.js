@@ -6,33 +6,29 @@ if (process.env.NODE_ENV === 'dev'){
 
 const port = process.env.PORT || 8080;
 
-/* const ADM = process.env.ADM */
-
 import express, { json, urlencoded } from 'express';
+import { Server as HttpServer } from "http";
+import { Server as IOServer } from "socket.io";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import MongoStore from "connect-mongo";
 import passport from "passport";
 import compression from "compression";
-/* import multer from 'multer'; */
 import logger from "./loggers/logger.js";
 import engine from 'ejs-mate';
-/* import path from 'path';
-import {fileURLToPath} from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const rutaIMG=path.join(__dirname, '/public','profile-img')
- */
+import {chat} from "./controllers/chatController.js";
+
 import MongoSingleton from "./db/conexionSingleton.js";
+MongoSingleton.getInstance(); /* import "./db/conectMongo.js" */
 
-MongoSingleton.getInstance();
-/* import "./db/conectMongo.js" */
 import router from "./routes/index.js";
 import './middleware/passport.js'
 
 // inicialización
 const app = express();
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
 
 //config plantilla
 app.engine('ejs', engine);
@@ -46,7 +42,7 @@ app.use(compression());
 app.use(urlencoded({ extended: true }))
 
 app.use((req, res, next) => {
-  app.locals.usuario = req.user;
+  app.locals.usuario = req.user; //envía datos del usuario a todas las vistas
   next();
 });
 
@@ -71,12 +67,22 @@ app.use(cookieParser());
 //rutas
 app.use("/", router);
 
-app.listen(port, ()=>{
+httpServer.listen(port, (error) => {
+  try {
+    logger.info(`SERVER ON: PORT ${port}`);
+  } catch (error) {
+    logger.error(`ERROR AL INTENTAR LEVANTAR SERVER ON: PORT ${port}:  ${error} `);
+  }
+});
+
+// Servidor socket
+io.on("connection", chat);
+/* app.listen(port, ()=>{
     try {
         logger.info(`SERVER ON: PORT ${port}`)
       } catch (error) {
         logger.error(`ERROR AL INTENTAR LEVANTAR SERVER ON: PORT ${port}:  ${error} `)
       }
-})
+}) */
 
 app.on("error", (error) => logger.error(`Error en servidor: ${error}`));

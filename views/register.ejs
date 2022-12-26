@@ -15,7 +15,7 @@
             
           </div>
 
-          <form action="/register" method="POST" enctype="multipart/form-data">
+          <form id="formRegister" action="/register" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
               <input type="file" name="foto" onchange="cambio()" accept="image/*" id="imgRuta" style="display:none">
@@ -39,9 +39,12 @@
               <input type="email" name="email" placeholder="Email" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="password" placeholder="Password" class="form-control">
+              <input id="password" type="text" name="password" placeholder="Password (5 caracteres como mínimo)" class="form-control">
             </div>
-            <button type="submit" class="btn btn-dark btn-block mt-4">
+            <div class="form-group">
+              <input id= "passwordVerificar" type="text" name="passwordVerificar" placeholder="Confirme password" class="form-control">
+            </div>
+            <button id="btnRegister" class="btn btn-dark btn-block mt-4">
               Registrar
             </button>
           </form>

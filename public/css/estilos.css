@@ -109,6 +109,30 @@ img{
 .btn-prods-del:hover{
     border: 1px solid #454d55;
 }
-.chat{
-    padding-top: 100px;
+
+.cardChat{
+    margin-top: 1.5rem;
+    top: 100px;
+}
+
+.centroMensajes{
+    padding: 10px;
+}
+
+.centroMsg{
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.btnChat{
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+.boxMensajes{
+    font-size: 10px;
 }

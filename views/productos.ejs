@@ -1,17 +1,31 @@
 <%- layout('layouts/main.ejs') %>
-<div class="container ">
+
+<div class="container contenedorProductos sticky-top">
+  
   <div class="row ">
     <div class="container col-8">
       <%- include('tabla.ejs'); %>
     </div>
-    <div class="col-sm-4">
-      <div class="sticky-top">
+    <div class="col-4">
+      <div class="sticky-top cardChat">
         <div class="card">
-          <h3>CHAT</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, autem est. Nobis ratione, illo neque rerum possimus maxime sed, impedit molestias harum laudantium error, tempora iste quaerat dolorum quia cumque.</p>
+          
+          <div class="centroMensajes">
+            <h3 class="centroMsg">Centro de Mensajes</h3>
+            <label for="inputMail">Ingrese su mail</label>
+            <input type="email" id="inputMail" value="<%=usuario%>"/><br>
+            
+            <div id="msg"></div>
+            
+            <label for="inputChat">Mensaje</label>
+            <input type="text" id="inputChat" placeholder="Ingrese aquí su mensaje" />
+            <button class="btn btn-primary btnChat" id="enviarChat">Enviar</button>
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
   
 </div>
+
