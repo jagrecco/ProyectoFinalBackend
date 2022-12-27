@@ -1,6 +1,8 @@
 import logger from "../loggers/logger.js";
 import { chatModel } from "../models/chatModel.js";
 
+import { persisteChat, leerChat } from "../daos/chatDao.js";
+
 let mensajes=[];
 
 /* leerMsgs(); */
@@ -25,52 +27,22 @@ async function chat(data) {
   io.sockets.emit("mensaje", mensajes);
 }
 
-/* function chat(socket) {
-  
-  logger.info(`¡Nuevo cliente conectado!`)
-  socket.emit("mensaje", mensajes);
-
-  socket.on("mensaje", (data) => {
-    try {
-
-        try {
-          mensajes.push(data);
-          socket.emit("mensaje", mensajes);
-        } catch (error) {
-          logger.error(`ERROR AL INTENTAR ENVIAR CHAT: ${data}:  ${error} `);
-        }
-        
-    } catch (error) {
-        logger.error(`ERROR AL INTENTAR ENVIAR CHAT: ${data}:  ${error} `);
-    };
-
-
-  });
-
-};
- */
-async function leerMsgs() {
-  let mensajes=[];
+async function leer() {
   try {
-    mensajes = await chatModel.find({})
+    mensajes = leerChat();
     return mensajes
   } catch (error) {
     logger.error(`ERROR AL INTENTAR LEER CHAT: ${error} `)
   }
 };
 
-async function guardarMsgs(data) {
+async function guardar(data) {
+  
   try {
-    const {usrMail, usrMsg, date} = data;
-    const newMsg = new chatModel(data);
-    newMsg.usrMail = usrMail;
-    newMsg.usrMsg = usrMsg;
-    newMsg.date = date;
-    await newMsg.save()
-    return newMsg
+    persisteChat(data);
   } catch (error) {
     logger.error(`ERROR AL INTENTAR GUARDAR CHAT: ${error} `)
   }
 };
 
-export {chat, chat2}
+export {leer, guardar};

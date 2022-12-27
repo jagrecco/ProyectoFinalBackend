@@ -37,16 +37,23 @@ socket.on("mensaje", (mensajes) => {
 
   const mensajesInput = mensajes
     .map(
-      (mensaje) =>
-      `<p class="mailMensaje boxMensajes">${mensaje.usrMail}</p> <p class="fechaMensaje boxMensajes">[${mensaje.date}]</p> <p class="txtMensaje boxMensajes"> ${mensaje.usrMsg}</p>`
-    
-    )
-    .join("<br>");
+      (mensaje) => 
+      `<div class=" boxMensajes">
+        <p class="fechaMensaje">[${mensaje.date}]</p>
+        <p class="mailMensaje">${mensaje.usrMail}</p>
+        <p class="txtMensaje"> ${mensaje.usrMsg}</p>
+      </div>`)
+    .join("");
   document.getElementById("msg").innerHTML = mensajesInput;
 });
 
 function limpiaChat() {  
   document.getElementById("inputChat").value="";
+}
+
+function colorRandom() {
+  const color = Math.floor(Math.random() * 16777215).toString(16);
+  return "#" + color;
 }
 
 
