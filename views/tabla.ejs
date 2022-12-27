@@ -13,7 +13,7 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                       Categoria <strong><%=cat%></strong>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu listadoCategorias">
                         <a class="dropdown-item" href="/api/productos/Todos">Todos los artículos</a>
                         <% for (let j = 0; j < categorias.length; j++) { %>
                             <a class="dropdown-item" href="/api/productos/<%=categorias[j].category%>"><%=categorias[j].category%></a>

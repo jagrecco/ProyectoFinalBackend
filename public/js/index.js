@@ -33,7 +33,7 @@ document.getElementById("enviarChat").addEventListener("click", () => {
 
 });
 
-socket.on("mensajes", (mensajes) => {
+socket.on("mensaje", (mensajes) => {
 
   const mensajesInput = mensajes
     .map(

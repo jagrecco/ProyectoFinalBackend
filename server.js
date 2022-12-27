@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'dev'){
 }
 
 const port = process.env.PORT || 8080;
+const mensajes = [{usrMail: "admin@coder.com", usrMsg: "Bienvenido al chat", date: "2022-08-01 12:00:00"}];
 
 import express, { json, urlencoded } from 'express';
 import { Server as HttpServer } from "http";
@@ -17,7 +18,7 @@ import compression from "compression";
 import logger from "./loggers/logger.js";
 import engine from 'ejs-mate';
 
-import {chat} from "./controllers/chatController.js";
+import {chat, chat2} from "./controllers/chatController.js";
 
 import MongoSingleton from "./db/conexionSingleton.js";
 MongoSingleton.getInstance(); /* import "./db/conectMongo.js" */
@@ -75,8 +76,40 @@ httpServer.listen(port, (error) => {
   }
 });
 
+io.on("connection", (socket) => {
+
+  logger.info(`¡Nuevo cliente conectado!`);
+
+  socket.emit("mensaje", mensajes);
+
+  socket.on("mensaje", (data) => {
+
+    mensajes.push(data)
+    io.sockets.emit("mensaje", mensajes);
+
+  });
+
+});
+
+/* io.on("connection", function(socket) {
+
+  logger.info(`¡Nuevo cliente conectado!`);
+
+  socket.emit("mensaje", mensajes);
+
+  socket.on("mensaje", (data) => {
+
+    mensajes.push(data)
+    io.sockets.emit("mensaje", mensajes);
+
+  });
+
+}); */
+
+/* io.on("connection", (socket)=>{chat2({socket, mensajes})}); */
+
 // Servidor socket
-io.on("connection", chat);
+/* io.on("connection", chat); */
 /* app.listen(port, ()=>{
     try {
         logger.info(`SERVER ON: PORT ${port}`)

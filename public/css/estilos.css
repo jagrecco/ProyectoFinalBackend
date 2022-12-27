@@ -136,3 +136,13 @@ img{
 .boxMensajes{
     font-size: 10px;
 }
+
+.listadoMensajes{
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.listadoCategorias{
+    height: 60vh;
+    overflow-y: scroll;
+}
