@@ -23,7 +23,6 @@ export async function productosGet (req, res) {
     
     const usrID=process.env.USERID
     
-    /* console.log(dtoProducts(productos)); */
     const productos=dtoProducts(prods);
 
     res.status(200).render('productos', {productos, categorias, usuario, usrID, cat});

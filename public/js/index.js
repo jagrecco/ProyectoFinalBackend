@@ -55,7 +55,7 @@ const msg = function(mensajes){
                     <p class="txtMensaje"> ${element.usrMsg}</p>
                   </div>`
   });
-  console.log(html);
+  
   return html;
 };
 
@@ -81,7 +81,7 @@ btnRegister.addEventListener("click", function(event) {
   }
 })
 
-
+///////////////////// Control del carrito //////////////////
 async function abrirModal(idProd){
 
   const prod={}
@@ -135,6 +135,27 @@ function eliminarProdCarrito(idProd){
       console.log(error);
     });
 }
+
+////////////////////////// Control del carrito //////////////////////////
+
+///////////////////// Control de productos del catálogo //////////////////
+
+function deleteProduct(idProd){
+  
+  const confirmar=confirm(`¿Está seguro que desea eliminar el producto del catálogo?`);
+  if (!confirmar) {return};
+
+  axios.delete(`/api/productos/${idProd}`, idProd) //enviar id del comprador
+    .then(function (response) {
+      console.log(`Delete de ${idProd} exitoso`);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+///////////////////// Control de productos del catálogo //////////////////
 
 function cambio(file){
   
