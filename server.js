@@ -5,8 +5,6 @@ if (process.env.NODE_ENV === 'dev'){
 }
 
 const port = process.env.PORT || 8080;
-/* const mensajes = [{usrMail: "admin@coder.com", usrMsg: "Bienvenido al chat", date: "2022-08-01 12:00:00"}]; */
-const mensajes=[];
 
 import express, { json, urlencoded } from 'express';
 import { Server as HttpServer } from "http";
@@ -26,6 +24,8 @@ MongoSingleton.getInstance(); /* import "./db/conectMongo.js" */
 
 import router from "./routes/index.js";
 import './middleware/passport.js'
+
+let mensajes = leer().then((data) => mensajes = data)
 
 // inicialización
 const app = express();
@@ -80,11 +80,7 @@ httpServer.listen(port, (error) => {
 io.on("connection", (socket) => {
 
   logger.info(`¡Nuevo cliente conectado!`);
-
-  leer().then((data) => {
-    socket.emit("mensaje", data);
-  })
-  /* socket.emit("mensaje", mensajes); */
+  socket.emit("mensaje", mensajes);
 
   socket.on("mensaje", (data) => {
 
@@ -98,31 +94,5 @@ io.on("connection", (socket) => {
 
 });
 
-/* io.on("connection", function(socket) {
-
-  logger.info(`¡Nuevo cliente conectado!`);
-
-  socket.emit("mensaje", mensajes);
-
-  socket.on("mensaje", (data) => {
-
-    mensajes.push(data)
-    io.sockets.emit("mensaje", mensajes);
-
-  });
-
-}); */
-
-/* io.on("connection", (socket)=>{chat2({socket, mensajes})}); */
-
-// Servidor socket
-/* io.on("connection", chat); */
-/* app.listen(port, ()=>{
-    try {
-        logger.info(`SERVER ON: PORT ${port}`)
-      } catch (error) {
-        logger.error(`ERROR AL INTENTAR LEVANTAR SERVER ON: PORT ${port}:  ${error} `)
-      }
-}) */
 
 app.on("error", (error) => logger.error(`Error en servidor: ${error}`));

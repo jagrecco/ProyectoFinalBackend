@@ -5,9 +5,7 @@ const inputChat = document.getElementById("inputChat");
 inputChat.addEventListener("keypress", function(event) {
   
   if (event.key === "Enter") {
-  
     event.preventDefault();
-  
     document.getElementById("enviarChat").click();
   }
 }); 
@@ -33,19 +31,33 @@ document.getElementById("enviarChat").addEventListener("click", () => {
 
 });
 
-socket.on("mensaje", (mensajes) => {
 
-  const mensajesInput = mensajes
-    .map(
-      (mensaje) => 
-      `<div class=" boxMensajes">
-        <p class="fechaMensaje">[${mensaje.date}]</p>
-        <p class="mailMensaje">${mensaje.usrMail}</p>
-        <p class="txtMensaje"> ${mensaje.usrMsg}</p>
-      </div>`)
-    .join("");
+socket.on("mensaje", (mensajes) => {
+  const mensajesInput=msg(mensajes);
   document.getElementById("msg").innerHTML = mensajesInput;
 });
+
+
+////// Funciones auxiliares
+const msg = function(mensajes){
+  let clase="";
+  let html="";
+
+  mensajes.forEach(element => {
+    if (element.usrMail === document.getElementById('inputMail').value){
+      clase="MensajesPropios";
+    } else {
+      clase="MensajesAjenos";
+    }
+    html= html + `<div class="boxMensajes ${clase}">
+                    <p class="fechaMensaje">[${element.date}]</p>
+                    <p class="mailMensaje">${element.usrMail}</p>
+                    <p class="txtMensaje"> ${element.usrMsg}</p>
+                  </div>`
+  });
+  console.log(html);
+  return html;
+};
 
 function limpiaChat() {  
   document.getElementById("inputChat").value="";
@@ -55,7 +67,6 @@ function colorRandom() {
   const color = Math.floor(Math.random() * 16777215).toString(16);
   return "#" + color;
 }
-
 
 const inputPw = document.getElementById("password");
 const inputPwVer = document.getElementById("passwordVerificar");

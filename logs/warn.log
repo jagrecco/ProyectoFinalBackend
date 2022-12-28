@@ -287,3 +287,6 @@
 [2022-12-27T04:18:24.184Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]
 [2022-12-27T04:20:11.390Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]
 [2022-12-27T04:21:51.099Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]
+[2022-12-28T00:58:44.925Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]
+[2022-12-28T01:52:04.135Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]
+[2022-12-28T02:04:00.448Z  Level: [33mwarn[39m  Método: GET Ruta inexistente: /favicon.ico]

@@ -71,8 +71,6 @@ img{
 .imgNav{
     width: 60px;
     height: auto;
-    /* box-shadow: 7px 10px 5px 0px rgba(247,243,243,0.75); */
-    /* filter: drop-shadow(0 0 0.75rem white); */
     filter: drop-shadow(2px 2px 2px white);
 }
 
@@ -134,6 +132,7 @@ img{
     border-color: #454d55;
 }
 .boxMensajes{
+    background-color: #ebeef3;
     border-radius: 10px;
     padding: 6px;
     margin: 5px 0 0 0;
@@ -157,7 +156,7 @@ img{
 
 .txtMensaje{
     font-size: 12px;
-    font-weight: bolder;
+    font-weight: bold;
     margin: 0 0 0 0;
 }
 
@@ -169,4 +168,16 @@ img{
 .listadoCategorias{
     height: 60vh;
     overflow-y: scroll;
+}
+
+.MensajesPropios{
+    color: green;
+    text-align: right;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.MensajesAjenos{
+    border-radius: 10px;
+    padding: 6px;
 }
