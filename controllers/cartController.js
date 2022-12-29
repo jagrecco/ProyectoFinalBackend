@@ -7,9 +7,12 @@ export async function carritoGetTodos (req, res) {
 
 export async function carritoPostAgregarProducto (req, res) {
 
-    const {carro} = req.params
+    const { carro } = req.params
     const producto=JSON.stringify(req.body)
-  
+
+    const carrito = await carritosDao.listarUno(carro);
+    console.log(carrito);
+
     const data = await carritosDao.agregarProducto(carro, producto)
     res.status(201).json(data)
   
@@ -17,8 +20,8 @@ export async function carritoPostAgregarProducto (req, res) {
 
 export async function carritoDelete (req, res) {
     const id = req.params.id
-    const data = await carritosDao.borrarUno(id)  
-    res.json(data) 
+    const data = await carritosDao.borrarUno(id);
+    res.status(200).json(data);
 };
 
 export async function carritoGetSegunUsuario (req, res) {  

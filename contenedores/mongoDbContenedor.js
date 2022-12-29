@@ -40,7 +40,8 @@ class ContenedorMongo{
             return await this.col.find({_id: idProducto});
         }
         catch (error){
-            logger.error(`Error al conectar a la fuente de datos: ${error}`)
+            logger.error(`Error al conectar a la fuente de datos: ${error}`);
+            throw new Error(`Elemento no encontrado`);
         }
 
     }

@@ -83,20 +83,23 @@ btnRegister.addEventListener("click", function(event) {
 
 ///////////////////// Control del carrito //////////////////
 async function abrirModal(idProd){
+  console.log(idProd);
+  const confirmar=confirm("¿Está seguro que desea agregar el producto al carrito?");
+  if (!confirmar) {return}
 
   const prod={}
 
-  axios.get(`/api/productos/prod/${idProd}`)
+  axios.get(`/api/productos/prod/${idProd}`) //obtener producto
     .then(function (response) {
 
-      prod.nombre=response.data[0].title
-      prod.descripcion=response.data[0].description
-      prod.codigo=response.data[0]._id
-      prod.foto=response.data[0].thumbnail
-      prod.precio=response.data[0].price
-      prod.stock=response.data[0].stock
-    
-      console.log(prod);
+      prod.nombre=response.data[0].title;
+      prod.descripcion=response.data[0].description;
+      prod.codigo=response.data[0]._id;
+      prod.foto=response.data[0].thumbnail;
+      prod.precio=response.data[0].price;
+      prod.stock=response.data[0].stock;
+      prod.cantidad=1;
+
       enviarCarrito(prod);
       animarCarro();
     })
@@ -106,16 +109,13 @@ async function abrirModal(idProd){
 
 }
 
-function enviarCarrito(producto){
+async function enviarCarrito(producto){
   
-  const ui=document.getElementById("abrirModal").value
-  
-  console.log(`/api/carrito/${ui}`);
-  
+  const ui=document.getElementById("abrirModal").value //ui es el id del usuario
+
   axios.post(`/api/carrito/${ui}`, producto) //enviar id del comprador
     .then(function (response) {
       console.log(`Post de ${producto} al carro de usr: ${ui} hecho`);
-      
     })
     .catch(function (error) {
       console.log(error);
@@ -123,19 +123,35 @@ function enviarCarrito(producto){
 }
 
 function eliminarProdCarrito(idProd){
+
   const confirmar=confirm("¿Está seguro que desea eliminar el producto del carrito?");
   if (!confirmar) {return}
+
   const idCarro=document.getElementById("btnEliminaProducto").value
   axios.delete(`/api/carrito/${idCarro}/productos/${idProd}`, idProd) //enviar id del comprador
     .then(function (response) {
       console.log(`Delete de ${idProd} al carro de usr: ${idCarro} hecho`);
-      location.reload();
+      location.reload(); //recarga la página después de eliminar un artículo
     })
     .catch(function (error) {
       console.log(error);
     });
 }
 
+function eliminarCarrito(idCarro){ //elimina el carrito completo
+
+  const confirmar=confirm("¿Está seguro que desea cancelar el pedido?");
+  if (!confirmar) {return}
+
+  axios.delete(`/api/carrito/${idCarro}`, idCarro)
+    .then(function (response) {
+      console.log(`Delete de ${idCarro} exitoso`);
+      document.getElementById("redirectCatalogo").click();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+} 
 ////////////////////////// Control del carrito //////////////////////////
 
 ///////////////////// Control de productos del catálogo //////////////////

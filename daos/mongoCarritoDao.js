@@ -20,7 +20,7 @@ class CarritoMongoDao extends ContenedorMongo {
                         nuevoCarro.idUsuario=idCarrito;
                         nuevoCarro.productos=[];
                         nuevoCarro.productos.push(JSON.parse(producto))
-                        console.log(nuevoCarro);
+                        /* console.log(nuevoCarro); */
                         const nuevoCarrito=this.col(nuevoCarro)
                         await nuevoCarrito.save()
 

@@ -2,18 +2,20 @@
 
 <div class="container mt-4">
 
-    <table class="table table-striped mt-4">
+    <table class="table table-striped mt-5">
         <thead class="thead-dark">
-            <thead><th colspan="4" class="text-center encabezadoCarro">Mi carrito de compras</th></thead>
+            <thead><th colspan="5" class="text-center encabezadoCarro">Mi carrito de compras</th></thead>
             
             <tr>
-                <th scope="col" class="text-center">Producto</th>
-                <th scope="col" class="text-center">Precio</th>
-                <th scope="col" class="text-center">Img</th>
+                <th scope="col" class="text-left">Cantidad</th>
+                <th scope="col" class="text-left">Producto</th>
+                <th scope="col" class="text-left">Precio</th>
+                <th scope="col" class="text-left">Img</th>
                 <th scope="col" class="text-center"><div></div></th>
             </tr>
         </thead class="thead-dark">
             <tr>
+                <th scope="col"> </th>
                 <th scope="col"> </th>
                 <th scope="col"> </th>
                 <th scope="col"> </th>
@@ -33,6 +35,11 @@
                 <tr class="">
                     
                     <td><blockquote class="blockquote">
+                        <p class="mb-0"><%=carro.productos[i].cantidad%> unidades</p>
+                      </blockquote>
+                    </td>
+
+                    <td><blockquote class="blockquote">
                         <p class="mb-0"><%=carro.productos[i].nombre%></p>
                         <footer class="blockquote-footer"><%=carro.productos[i].descripcion%></footer>
                       </blockquote>
@@ -40,6 +47,7 @@
                     
                     <td><span>$<%=carro.productos[i].precio%></span></td>                    
                     <td class="imagen"><img src=<%=carro.productos[i].foto%>></img></td>
+                    
                     <td><div><button class="btn btn-dark btn-prods-del" value="<%=usrID%>" id="btnEliminaProducto" onclick="eliminarProdCarrito(`<%=carro.productos[i]._id%>`)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                       </svg></button></div></td>
@@ -49,9 +57,20 @@
         </tbody>
     </table>
 
-    <a href="/api/productos/Todos" class="btn btn-dark mt-4 encabezadoCarro">Volver al catálogo</a>
+    <a href="/api/productos/Todos" class="btn btn-dark mt-4 encabezadoCarro" id="redirectCatalogo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+      </svg>  Volver al catálogo</a>
 
     <!-- ESCRIBIR METODO POST PARA TERMINAR COMPRA -->
-    <a href="/api/productos/Todos" class="btn btn-dark mt-4 encabezadoCarro">Cofirmar compra</a> 
+    <button class="btn btn-dark mt-4 encabezadoCarro" onclick="confirmarCompra(`<%=carro._id%>`)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+      </svg>  Terminar compra</button>
+    <button class="btn btn-dark mt-4 encabezadoCarro" onclick="eliminarCarrito(`<%=carro._id%>`)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+      </svg>  Cancelar compra</button>
     
+
 </div>
