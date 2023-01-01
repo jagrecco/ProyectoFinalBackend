@@ -11,9 +11,10 @@ export function loginUsr (req, res) { // RUTA EN DESHUSO /////
 
 export async function raizUsr (req, res) {
 
-    const usuario=req.session.user
-    const usrID=""
-    res.status(200).render('signin', {usuario, usrID})
+    if (req.session.user) { res.redirect('/api/productos/Todos') };
+    const usuario=req.session.user;
+    const usrID="";
+    res.status(200).render('signin', {usuario, usrID});
 
 }
 

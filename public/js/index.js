@@ -171,6 +171,69 @@ function deleteProduct(idProd){
     });
 }
 
+function editProductDisplay(id){
+
+  if (document.getElementById(`detalleProd${id}`).style.display=="none") {
+    document.getElementById(`detalleProd${id}`).style.display="block";
+    return;
+  }
+  document.getElementById(`detalleProd${id}`).style.display="none";
+}
+
+function updateProduct(idProd){ //envia el producto editado al servidor
+  const confirmar=confirm(`¿Está seguro que desea hacer cambios en el producto?`);
+  if (!confirmar) {return};
+
+  const producto={
+    title: document.getElementById(`updateTitle${idProd}`).value,
+    description: document.getElementById(`updateDescription${idProd}`).value,
+    price: document.getElementById(`updatePricePure${idProd}`).value,
+    discountPercentage: document.getElementById(`updateDiscountPercentage${idProd}`).value,
+    rating: document.getElementById(`updateRating${idProd}`).value,
+    stock: document.getElementById(`updateStock${idProd}`).value,
+    brand: document.getElementById(`updateBrand${idProd}`).value,
+    category: document.getElementById(`updateCategory${idProd}`).value,
+    thumbnail: document.getElementById(`updateThumbnail${idProd}`).value,
+  }
+
+  axios.put(`/api/productos/${idProd}`, producto) //enviar id del comprador
+    .then(function (response) {
+      location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+function newProductDisplay(){
+
+  if (document.getElementById(`detalleNewProd`).style.display=="none") {
+    document.getElementById(`detalleNewProd`).style.display="block";
+    return;
+  }
+  document.getElementById(`detalleNewProd`).style.display="none";
+}
+
+function newProductUpload(){ //envia el producto editado al servidor
+
+  if (document.getElementById(`updateTitle`).value=="" || document.getElementById(`updatePricePure`).value=="" || document.getElementById(`updateRating`).value=="" || document.getElementById(`updateStock`).value=="" || document.getElementById(`updateBrand`).value=="" || document.getElementById(`updateThumbnail`).value=="") {
+    alert("Faltan datos por completar");
+    return;
+  }
+
+  const producto={
+    title: document.getElementById(`updateTitle`).value,
+    description: document.getElementById(`updateDescription`).value,
+    price: document.getElementById(`updatePricePure`).value,
+    discountPercentage: document.getElementById(`updateDiscountPercentage`).value,
+    rating: document.getElementById(`updateRating`).value,
+    stock: document.getElementById(`updateStock`).value,
+    brand: document.getElementById(`updateBrand`).value,
+    category: document.getElementById(`updateCategory`).value,
+    thumbnail: document.getElementById(`updateThumbnail`).value,
+  }
+} 
+
 ///////////////////// Control de productos del catálogo //////////////////
 
 function cambio(file){

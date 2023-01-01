@@ -31,8 +31,8 @@
     max-width: 450px;
 }
 .imagen{
-    width: 120px;
-    height: 90px;
+    width: 160px;
+    height: 160px;
 }
 
 img{
@@ -180,4 +180,29 @@ img{
 .MensajesAjenos{
     border-radius: 10px;
     padding: 6px;
+}
+
+.detallePro{
+    width: 100%;
+}
+
+.detalleProdForm{
+    width: 100%;
+    border: 1px solid #454d55;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.iimagenProducto{
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.newProduct{
+    display: none;
+    border: 1px solid #454d55;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 0 10px 0;
 }

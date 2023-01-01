@@ -14,9 +14,9 @@ const pSchema = new mongoose.Schema({
     brand: { type: String, required: true, max: 100, default: "Sin marca" },
     category: { type: String, required: true, max: 100, default: "Sin categoria" },
     thumbnail:{ type: String, max: 150, default: url },
-    images: { type: Array },
+    // images: { type: Array },
 
-    });
+});
 
 const ProdModel = mongoose.model("productos", pSchema);
 export default ProdModel

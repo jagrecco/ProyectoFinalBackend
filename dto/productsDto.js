@@ -7,17 +7,16 @@ export function dtoProducts(arrayProducts) {
         let productDto = {
 
             id: product._id,
-
             title: product.title,
-
             description: product.description,
-
             price: calculoPrice(product.price, product.discountPercentage),
-
+            pricePure: product.price,
             discountPercentage: product.discountPercentage,
-
+            rating: product.rating,
+            stock: product.stock,
+            brand: product.brand,
+            category: product.category,
             discount: calculoDiscount(product.price, product.discountPercentage),
-
             thumbnail: product.thumbnail,
 
         };
