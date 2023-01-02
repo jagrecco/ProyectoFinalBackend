@@ -45,7 +45,7 @@
                       </blockquote>
                     </td>
                     
-                    <td><span>$<%=carro.productos[i].precio%></span></td>                    
+                    <td><span>$<%=carro.productos[i].precio.toFixed(2)%></span></td>                    
                     <td class="imagen"><img src=<%=carro.productos[i].foto%>></img></td>
                     
                     <td><div><button class="btn btn-dark btn-prods-del" value="<%=usrID%>" id="btnEliminaProducto" onclick="eliminarProdCarrito(`<%=carro.productos[i]._id%>`)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -55,6 +55,7 @@
                 
             <% } } %>
         </tbody>
+        
     </table>
 
     <a href="/api/productos/Todos" class="btn btn-dark mt-4 encabezadoCarro" id="redirectCatalogo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">

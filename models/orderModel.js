@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const url="https://i.picsum.photos/id/119/3264/2176.jpg?hmac=PYRYBOGQhlUm6wS94EkpN8dTIC7-2GniC3pqOt6CpNU"
 
-const carritoSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     idUsuario: { type: String, required: true, max: 100 },
     usrMail: { type: String, required: true, trim: true, default: "Sin mail" },
     timestamp:  { type: Date, default: Date.now },
@@ -21,5 +21,5 @@ const carritoSchema = new mongoose.Schema({
     });
 
 
-const CarrModel = mongoose.model("carrito", carritoSchema);
-export default CarrModel
+const OrdersModel = mongoose.model("orders", orderSchema);
+export { OrdersModel };

@@ -1,7 +1,8 @@
 import { Router } from "express";
 const router = Router();
 
-import log from '../utils/log.js'
+import log from '../utils/log.js';
+import orders from "./orders.js";
 import products from "./productos.js";
 import cart from "./carrito.js";
 import login from "./login.js";
@@ -30,6 +31,7 @@ router.use("/logout", logout);
 router.use("/api/productos", products);
 router.use("/api/carrito", cart);
 router.use("/profile", profile);
+router.use("/api/orders", orders)
 
 router.use('*', (req,res,next)=>{
     log(req.method,req.originalUrl, 404)

@@ -1,4 +1,5 @@
 import { carritosDao } from "../daos/index.js";
+import logger from "../loggers/logger.js";
 
 export async function carritoGetTodos (req, res) {
     const datos = await carritosDao.listarTodos()
@@ -9,9 +10,6 @@ export async function carritoPostAgregarProducto (req, res) {
 
     const { carro } = req.params
     const producto=JSON.stringify(req.body)
-
-    const carrito = await carritosDao.listarUno(carro);
-    console.log(carrito);
 
     const data = await carritosDao.agregarProducto(carro, producto)
     res.status(201).json(data)

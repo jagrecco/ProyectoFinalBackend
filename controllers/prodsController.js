@@ -38,7 +38,8 @@ export async function unProductoGet (req, res) {
   if (productos.length == 0) {
     res.status(404).json({error: 'producto no encontrado'});
   } else {
-    res.status(201).send(productos).json;
+    const prods=dtoProducts(productos);
+    res.status(201).send(prods).json;
   };
 };
 

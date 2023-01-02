@@ -83,18 +83,19 @@ btnRegister.addEventListener("click", function(event) {
 
 ///////////////////// Control del carrito //////////////////
 async function abrirModal(idProd){
-  console.log(idProd);
+
   const confirmar=confirm("¿Está seguro que desea agregar el producto al carrito?");
   if (!confirmar) {return}
 
   const prod={}
 
-  axios.get(`/api/productos/prod/${idProd}`) //obtener producto
-    .then(function (response) {
+  await axios.get(`/api/productos/prod/${idProd}`) //obtener producto
 
+    .then(function (response) {
+      
       prod.nombre=response.data[0].title;
       prod.descripcion=response.data[0].description;
-      prod.codigo=response.data[0]._id;
+      prod.codigo=String(response.data[0].id);
       prod.foto=response.data[0].thumbnail;
       prod.precio=response.data[0].price;
       prod.stock=response.data[0].stock;
@@ -110,10 +111,10 @@ async function abrirModal(idProd){
 }
 
 async function enviarCarrito(producto){
-  
+
   const ui=document.getElementById("abrirModal").value //ui es el id del usuario
 
-  axios.post(`/api/carrito/${ui}`, producto) //enviar id del comprador
+  await axios.post(`/api/carrito/${ui}`, producto) 
     .then(function (response) {
       console.log(`Post de ${producto} al carro de usr: ${ui} hecho`);
     })
@@ -196,7 +197,7 @@ function updateProduct(idProd){ //envia el producto editado al servidor
     thumbnail: document.getElementById(`updateThumbnail${idProd}`).value,
   }
 
-  axios.put(`/api/productos/${idProd}`, producto) //enviar id del comprador
+  axios.put(`/api/productos/${idProd}`, producto)
     .then(function (response) {
       location.reload();
     })
@@ -216,6 +217,9 @@ function newProductDisplay(){
 
 function newProductUpload(){ //envia el producto editado al servidor
 
+  const confirmar=confirm(`¿Está seguro que desea hacer agregar el producto?`);
+  if (!confirmar) {return};
+
   if (document.getElementById(`updateTitle`).value=="" || document.getElementById(`updatePricePure`).value=="" || document.getElementById(`updateRating`).value=="" || document.getElementById(`updateStock`).value=="" || document.getElementById(`updateBrand`).value=="" || document.getElementById(`updateThumbnail`).value=="") {
     alert("Faltan datos por completar");
     return;
@@ -224,15 +228,23 @@ function newProductUpload(){ //envia el producto editado al servidor
   const producto={
     title: document.getElementById(`updateTitle`).value,
     description: document.getElementById(`updateDescription`).value,
-    price: document.getElementById(`updatePricePure`).value,
-    discountPercentage: document.getElementById(`updateDiscountPercentage`).value,
-    rating: document.getElementById(`updateRating`).value,
-    stock: document.getElementById(`updateStock`).value,
+    price: parseFloat(document.getElementById(`updatePricePure`).value),
+    discountPercentage: parseFloat( document.getElementById(`updateDiscountPercentage`).value),
+    rating: parseFloat(document.getElementById(`updateRating`).value),
+    stock: parseInt(document.getElementById(`updateStock`).value),
     brand: document.getElementById(`updateBrand`).value,
     category: document.getElementById(`updateCategory`).value,
     thumbnail: document.getElementById(`updateThumbnail`).value,
   }
-} 
+  
+  axios.post(`/api/productos/`, producto)
+    .then(function (response) {
+      location.reload();;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 ///////////////////// Control de productos del catálogo //////////////////
 

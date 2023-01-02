@@ -20,14 +20,26 @@ class CarritoMongoDao extends ContenedorMongo {
                         nuevoCarro.idUsuario=idCarrito;
                         nuevoCarro.productos=[];
                         nuevoCarro.productos.push(JSON.parse(producto))
-                        /* console.log(nuevoCarro); */
+                    
                         const nuevoCarrito=this.col(nuevoCarro)
                         await nuevoCarrito.save()
 
                     } else {
 
                         const arrayProductos=carro[0].productos
-                        arrayProductos.push(JSON.parse(producto))
+
+                        const prod=JSON.parse(producto);
+
+                        const index=arrayProductos.findIndex(el => el.codigo == prod.codigo);
+
+                        if (index!=-1) {
+                            arrayProductos[index].cantidad++;
+                            arrayProductos[index].precio=arrayProductos[index].precio + parseInt(prod.precio);
+                        } else {
+                            arrayProductos.push(prod);
+                        }
+
+                        // arrayProductos.push(prod);
 
                         await this.col.updateOne({idUsuario: idCarrito}, {$set: {productos: arrayProductos} })
                             try {
